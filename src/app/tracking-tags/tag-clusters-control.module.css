@@ -1,0 +1,110 @@
+.clusters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 8px 8px 10px;
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  border-left: 2px solid var(--link);
+  border-radius: 4px;
+}
+
+.clusterHeader,
+.groupHeader,
+.tagRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.clusterTitle,
+.groupTitle {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 6px 6px 8px;
+  border: 1px solid color-mix(in oklab, var(--border) 45%, transparent);
+  border-left: 2px solid color-mix(in oklab, var(--link) 55%, transparent);
+  border-radius: 3px;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tagRow {
+  min-width: 0;
+}
+
+.tagInput {
+  min-width: 0;
+  flex: 1;
+}
+
+.addRow {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.tagFilledSwitch,
+.clusterGiantSquareSwitch {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.clusterHeader {
+  gap: 12px;
+}
+
+.clusterTitle {
+  flex: 1;
+}
+
+.groupFlags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding-top: 2px;
+  border-top: 1px solid color-mix(in oklab, var(--border) 30%, transparent);
+}
+
+.groupColor {
+  min-width: 0;
+}
+
+/* Fixed width (swatch + reset) so every tag row's text input lines up,
+   whether or not the row shows a swatch/reset button. */
+.tagColor {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  width: 46px;
+}

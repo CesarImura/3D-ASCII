@@ -1,0 +1,124 @@
+/*
+ * ASCII 3D Studio -- tag overlay styles.
+ *
+ * Plain CSS (static class names, not CSS modules -- this file ships as-is
+ * in the "Export Code" bundle, so it has to work with any build setup, not
+ * just one with a CSS-modules loader). Pairs with tracking-tags-controller.ts,
+ * which creates/positions these elements every frame. Include this file on
+ * the page (bundler `import "./tracking-tags-overlay.css"` or a plain
+ * `<link rel="stylesheet">`) wherever TrackingTagsOverlay is used.
+ */
+
+.tt-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  overflow: visible;
+  pointer-events: none;
+  animation: tt-cluster-switch-flash 260ms ease-out;
+}
+
+@keyframes tt-cluster-switch-flash {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tt-lines-svg {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.tt-line,
+.tt-line-dashed {
+  stroke: var(--line-color);
+  stroke-width: var(--line-thickness);
+}
+
+.tt-line-dashed {
+  stroke-dasharray: 4 3;
+}
+
+.tt-square-giant {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 24;
+  width: var(--giant-square-size);
+  height: var(--giant-square-size);
+  transform: translate(-50%, -50%);
+  border: 1.5px solid var(--square-color);
+  animation: tt-tag-enter 180ms ease-out;
+}
+
+.tt-square-giant::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 2px;
+  background: var(--square-color);
+  transform: translate(-50%, -50%);
+}
+
+.tt-square-line-origin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 22;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid var(--line-color);
+  animation: tt-tag-enter 180ms ease-out;
+}
+
+.tt-chip-filled,
+.tt-chip-unfilled {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: calc(10px * var(--tag-scale, 1));
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 1;
+  animation: tt-tag-enter 180ms ease-out;
+  will-change: left, top;
+  padding: calc(var(--tag-padding-y, 6) * 1px) calc(var(--tag-padding-x, 4) * 1px);
+}
+
+.tt-chip-filled {
+  border-radius: 0;
+  background: var(--tag-bg);
+  color: #000000;
+}
+
+.tt-chip-unfilled {
+  background: transparent;
+  color: #ffffff;
+}
+
+@keyframes tt-tag-enter {
+  from {
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
